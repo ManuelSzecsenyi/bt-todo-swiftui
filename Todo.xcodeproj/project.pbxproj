@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -11,6 +11,8 @@
 		E0281284261655210035E52F /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0281283261655210035E52F /* ContentView.swift */; };
 		E0281286261655220035E52F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E0281285261655220035E52F /* Assets.xcassets */; };
 		E0281289261655220035E52F /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E0281288261655220035E52F /* Preview Assets.xcassets */; };
+		E0281292261657180035E52F /* Header.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0281291261657180035E52F /* Header.swift */; };
+		E02812962618F2F10035E52F /* URLImage in Frameworks */ = {isa = PBXBuildFile; productRef = E02812952618F2F10035E52F /* URLImage */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -20,6 +22,7 @@
 		E0281285261655220035E52F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E0281288261655220035E52F /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		E028128A261655220035E52F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E0281291261657180035E52F /* Header.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Header.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -27,6 +30,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E02812962618F2F10035E52F /* URLImage in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -57,6 +61,7 @@
 				E0281285261655220035E52F /* Assets.xcassets */,
 				E028128A261655220035E52F /* Info.plist */,
 				E0281287261655220035E52F /* Preview Content */,
+				E0281291261657180035E52F /* Header.swift */,
 			);
 			path = Todo;
 			sourceTree = "<group>";
@@ -85,6 +90,9 @@
 			dependencies = (
 			);
 			name = Todo;
+			packageProductDependencies = (
+				E02812952618F2F10035E52F /* URLImage */,
+			);
 			productName = Todo;
 			productReference = E028127E261655210035E52F /* Todo.app */;
 			productType = "com.apple.product-type.application";
@@ -112,6 +120,9 @@
 				Base,
 			);
 			mainGroup = E0281275261655210035E52F;
+			packageReferences = (
+				E02812942618F2F10035E52F /* XCRemoteSwiftPackageReference "url-image" */,
+			);
 			productRefGroup = E028127F261655210035E52F /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -139,6 +150,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E0281284261655210035E52F /* ContentView.swift in Sources */,
+				E0281292261657180035E52F /* Header.swift in Sources */,
 				E0281282261655210035E52F /* TodoApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -328,6 +340,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		E02812942618F2F10035E52F /* XCRemoteSwiftPackageReference "url-image" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/dmytro-anokhin/url-image";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.2.3;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		E02812952618F2F10035E52F /* URLImage */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = E02812942618F2F10035E52F /* XCRemoteSwiftPackageReference "url-image" */;
+			productName = URLImage;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = E0281276261655210035E52F /* Project object */;
 }
