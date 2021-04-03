@@ -11,6 +11,10 @@ struct ContentView: View {
     var body: some View {
 		VStack{
 			Header()
+				.padding(.horizontal)
+				.padding(.vertical, 10)
+			TodoList()
+				.padding(.horizontal)
 			Footer()
 				.cornerRadius(20, corners: [.topLeft, .topRight])
 
