@@ -33,7 +33,6 @@ struct TodoList_Previews: PreviewProvider {
 
 struct TodoItem: View {
 	
-	@State private var done: Bool = false;
 	@State var item: TodoItemModel
 	
 	var body: some View {
@@ -61,6 +60,10 @@ struct TodoItem: View {
 		.padding()
 		.background(Color("greyColor"))
 		.cornerRadius(10.0)
+		.onTapGesture {
+			self.item.done = !self.item.done
+			TodoService.updateItem(item: self.item)
+		}
 		
 	}
 }

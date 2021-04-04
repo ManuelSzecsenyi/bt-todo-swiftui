@@ -17,6 +17,7 @@ struct TodoItemModel: Codable, Identifiable {
 	var text: String
 	var done: Bool
 	var createdAt: Date
+	
 }
 
 enum DateError: String, Error {
@@ -59,6 +60,31 @@ class TodoService {
 					}
 			}
 		}
+	}
+	
+	static func updateItem(item: TodoItemModel) {
+		let encoder = JSONEncoder()
+		
+		do {
+			let json = try encoder.encode(item)
+			print(String(data: json, encoding: .utf8)!)
+			
+			var request = URLRequest(url: URL(string: self.url)!)
+			request.httpMethod = HTTPMethod.put.rawValue
+			request.setValue("application/json; charset=UTF-8", forHTTPHeaderField: "Content-Type")
+			request.httpBody = json
+			
+			AF.request(request)
+				.responseJSON { response in
+					print(response)
+				}
+
+		
+		} catch let error {
+			print(error)
+		}
+		
+		//
 	}
 	
 }
