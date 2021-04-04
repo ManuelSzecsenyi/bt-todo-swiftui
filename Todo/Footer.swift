@@ -10,6 +10,7 @@ import SwiftUI
 struct Footer: View {
 	
 	@State private var input: String = ""
+	@EnvironmentObject var todos: TodoData
 	
     var body: some View {
 		ZStack {
@@ -22,13 +23,27 @@ struct Footer: View {
 				}
 				
 				Image("save-btn")
+					.onTapGesture {
+						TodoService.addItem(text: input, success: self.addTodo)
+					}
 			}
 			.padding(.horizontal)
 			.padding(.vertical, 25)
 			.background(Color("todoBlue"))
 		}
-		
     }
+	
+	func addTodo(todo: TodoItemModel) {
+		self.todos.items.insert(
+			TodoItemModel(
+				id: todo.id,
+				text: todo.text,
+				done: todo.done,
+				createdAt: todo.createdAt
+			),
+			at: 0
+		)
+	}
 }
 
 struct Footer_Previews: PreviewProvider {
