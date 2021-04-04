@@ -10,25 +10,18 @@ import SwiftUI
 struct TodoList: View {
 	
 	@State private var done: Bool = false;
+	@EnvironmentObject var todos: TodoData
 	
 	var body: some View {
-		
+					
 		ScrollView {
 			LazyVStack {
-				TodoItem()
-				TodoItem()
-				TodoItem()
-				TodoItem()
-				TodoItem()
-				TodoItem()
-				TodoItem()
-				TodoItem()
-				TodoItem()
+				ForEach(todos.items) { item in
+					TodoItem(item: item)
+				}
+				
 			}
-			
-		}
-		
-		
+		}	
 	}
 }
 
@@ -41,14 +34,15 @@ struct TodoList_Previews: PreviewProvider {
 struct TodoItem: View {
 	
 	@State private var done: Bool = false;
+	@State var item: TodoItemModel
 	
 	var body: some View {
 		HStack {
-			if self.done {
+			if item.done {
 				
 				Image("item-checked")
 					.padding(.trailing, 5)
-				Text("Item #1")
+				Text(item.text)
 					.font(.system(size: 17.0))
 					.strikethrough()
 				
@@ -56,7 +50,7 @@ struct TodoItem: View {
 				
 				Image("item-unchecked")
 					.padding(.trailing, 5)
-				Text("Item #1")
+				Text(item.text)
 					.font(.system(size: 17.0))
 				
 			}

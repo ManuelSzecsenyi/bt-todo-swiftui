@@ -8,11 +8,11 @@
 import Foundation
 import Alamofire
 
-struct Response: Codable {
-	var items: [TodoItemModel]
+class TodoData: ObservableObject {
+	@Published var items: [TodoItemModel] = []
 }
 
-struct TodoItemModel: Codable {
+struct TodoItemModel: Codable, Identifiable {
 	var id: String
 	var text: String
 	var done: Bool
@@ -25,9 +25,9 @@ enum DateError: String, Error {
 
 class TodoService {
 	
-	static let url = "http://localhost:3000"
+	static let url = "https://radiant-spire-08360.herokuapp.com"
 	
-	static func getItems() {
+	static func getItems(onFinish: @escaping ([TodoItemModel]) -> Void) {
 		
 		AF.request(TodoService.url).responseData { response in
 			switch response.result {
@@ -53,7 +53,7 @@ class TodoService {
 					})
 					do {
 						let pageData = try decoder.decode([TodoItemModel].self, from: data)
-						print(pageData)
+						onFinish(pageData)
 					} catch let error {
 						print(error)
 					}

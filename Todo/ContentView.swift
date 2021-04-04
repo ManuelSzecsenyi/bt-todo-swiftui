@@ -8,6 +8,10 @@
 import SwiftUI
 
 struct ContentView: View {
+	
+	@State private var items: [TodoItemModel] = []
+	@StateObject var todos = TodoData()
+	
     var body: some View {
 		VStack{
 			Header()
@@ -18,10 +22,15 @@ struct ContentView: View {
 			Footer()
 				.cornerRadius(20, corners: [.topLeft, .topRight])
 		}.onAppear(perform: {
-			TodoService.getItems()
+			TodoService.getItems(onFinish: updateItems)
 		})
-        
+		.environmentObject(todos)
     }
+	
+	func updateItems(items: [TodoItemModel]) {
+		todos.items = items
+		print("loaded")
+	}
 }
 
 struct ContentView_Previews: PreviewProvider {
