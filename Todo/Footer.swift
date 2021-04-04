@@ -20,11 +20,13 @@ struct Footer: View {
 				ZStack(alignment: .leading) {
 					if input.isEmpty { Text("Eine Aufgabe hinzufügen").foregroundColor(Color("placeholderBlue")) }
 					TextField("", text: $input)
+						.foregroundColor(.white)
 				}
 				
 				Image("save-btn")
 					.onTapGesture {
-						TodoService.addItem(text: input, success: self.addTodo)
+						TodoService.addItem(text: self.input, success: self.addTodo)
+						self.input = ""
 					}
 			}
 			.padding(.horizontal)
@@ -34,14 +36,13 @@ struct Footer: View {
     }
 	
 	func addTodo(todo: TodoItemModel) {
-		self.todos.items.insert(
+		self.todos.items.append(
 			TodoItemModel(
 				id: todo.id,
 				text: todo.text,
 				done: todo.done,
 				createdAt: todo.createdAt
-			),
-			at: 0
+			)
 		)
 	}
 }
