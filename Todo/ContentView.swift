@@ -21,7 +21,10 @@ struct ContentView: View {
 				.padding(.horizontal)
 			Footer()
 				.cornerRadius(20, corners: [.topLeft, .topRight])
-		}.onAppear(perform: {
+				
+		}
+		.edgesIgnoringSafeArea(.bottom)
+		.onAppear(perform: {
 			TodoService.getItems(onFinish: updateItems)
 		})
 		.environmentObject(todos)
